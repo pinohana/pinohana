@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)file:///C:/Users/abi/Downloads/pinohana.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pino hana 🐦 小鳥たちの記録</title>
+<link href="./pino hana 🐦 小鳥たちの記録_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --green: #e8829a;
+    --green-light: #fdeef2;
+    --green-mid: #f5c0cc;
+    --peach: #f9d4dc;
+    --peach-light: #fff0f3;
+    --cream: #fff5f7;
+    --brown: #a0607a;
+    --brown-light: #e8b4c4;
+    --text: #4a3040;
+    --text-soft: #9a7080;
+    --white: #ffffff;
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(232,130,154,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(249,212,220,0.2) 0%, transparent 50%);
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 4rem;
+  }
+
+  /* floating birds decoration */
+  .deco-bird {
+    position: fixed;
+    font-size: 20px;
+    opacity: 0.18;
+    pointer-events: none;
+    animation: floatBird 8s ease-in-out infinite;
+  }
+  .deco-bird:nth-child(1) { top: 8%; left: 5%; animation-delay: 0s; }
+  .deco-bird:nth-child(2) { top: 20%; right: 8%; animation-delay: 2s; font-size: 14px; }
+  .deco-bird:nth-child(3) { top: 60%; left: 3%; animation-delay: 4s; font-size: 16px; }
+  .deco-bird:nth-child(4) { top: 75%; right: 5%; animation-delay: 1s; font-size: 12px; }
+
+  @keyframes floatBird {
+    0%, 100% { transform: translateY(0px) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 1.2rem;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fdeef2, #fff0f3);
+    border: 3px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 68px;
+    box-shadow: 0 4px 20px rgba(232,130,154,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .avatar-badge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: var(--white);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .hero-name {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .stat {
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .stat-num {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e8829a;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-top: 1px;
+  }
+
+  /* LINK BUTTONS */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .link-btn:active {
+    transform: translateY(0px);
+  }
+
+  .link-btn .btn-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.5);
+  }
+
+  .link-btn .btn-text { flex: 1; }
+  .link-btn .btn-title { display: block; font-size: 14px; font-weight: 700; }
+  .link-btn .btn-desc { display: block; font-size: 11px; opacity: 0.75; margin-top: 1px; font-weight: 400; }
+  .link-btn .btn-arrow { font-size: 16px; opacity: 0.6; }
+
+  .btn-yt {
+    background: linear-gradient(135deg, #fff0f0, #ffe4e4);
+    color: #c0392b;
+    border: 1.5px solid #ffc5c5;
+  }
+
+  .btn-x {
+    background: linear-gradient(135deg, #f0f4ff, #e4eaff);
+    color: #2d3a6b;
+    border: 1.5px solid #c5d0ff;
+  }
+
+  .btn-amz {
+    background: linear-gradient(135deg, #fffbf0, #fff3d4);
+    color: #8a5c00;
+    border: 1.5px solid #ffd980;
+  }
+
+  .btn-wish {
+    background: linear-gradient(135deg, #f0fff4, #d4f5e4);
+    color: #1a6b45;
+    border: 1.5px solid #80d9a8;
+  }
+
+  /* SECTION */
+  .section {
+    margin-top: 2rem;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(to right, #f5c0cc, transparent);
+    border-radius: 2px;
+  }
+
+  /* VIDEO EMBED */
+  .video-wrap {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+    margin-bottom: 10px;
+  }
+
+  .video-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    display: block;
+  }
+
+  .video-caption {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .video-caption-sub {
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  /* PLAYLIST CARDS */
+  .playlist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .playlist-grid .pl-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .pl-card {
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1.5px solid transparent;
+  }
+
+  .pl-card:hover {
+    transform: translateY(-2px);
+    border-color: #f5c0cc;
+  }
+
+  .pl-emoji { font-size: 22px; }
+  .pl-name { font-size: 12px; font-weight: 700; line-height: 1.4; }
+  .pl-count { font-size: 11px; color: var(--text-soft); }
+
+  /* ABOUT */
+  .about-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+    border-left: 4px solid #e8829a;
+  }
+
+  .about-text {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .tag {
+    background: #fdeef2;
+    color: #c0506a;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 11px;
+    color: var(--brown-light);
+  }
+
+  .footer-bird { font-size: 18px; display: block; margin-bottom: 6px; }
+
+  /* SWIPE BIRDS */
+  .swipe-outer { overflow: hidden; border-radius: 20px; }
+  .swipe-track { display: flex; transition: transform 0.35s cubic-bezier(.4,0,.2,1); }
+  .bird-card { min-width: 100%; padding: 1.5rem 1rem; background: #fff0f3; border-radius: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.7rem; }
+  .bird-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #fdeef2;
+  border: 3px solid #f5c0cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 90px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+  .bird-name { font-size: 20px; font-weight: 700; color: #4a3040; }
+  .bird-species { font-size: 13px; color: #c0506a; background: #fdeef2; padding: 4px 14px; border-radius: 999px; font-weight: 700; }
+  .bird-gender { font-size: 12px; color: #9a7080; }
+  .bird-desc { font-size: 13px; color: #6a5060; line-height: 1.8; max-width: 280px; text-align: left; }
+  .bird-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .bird-tag { font-size: 11px; font-weight: 700; background: #fff0f3; color: #c0506a; padding: 3px 10px; border-radius: 999px; border: 1px solid #f5c0cc; }
+  .swipe-nav { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 0.8rem; }
+  .nav-btn { width: 36px; height: 36px; border-radius: 50%; background: #fff; border: 1.5px solid #f5c0cc; color: #c0506a; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .nav-btn:hover { background: #fdeef2; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #f5c0cc; transition: background 0.2s, transform 0.2s; }
+  .dot.active { background: #e8829a; transform: scale(1.3); }
+  .swipe-hint { text-align: center; font-size: 11px; color: #c0a0b0; margin-top: 0.5rem; }
+
+  /* RAINBOW BRIDGE */
+  .rainbow-intro { text-align: center; font-size: 13px; color: #9a7080; margin-bottom: 1rem; font-weight: 500; }
+  .rb-card { background: #fff; border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 10px; border-left: 4px solid #c8a8d8; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .rb-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .rb-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #f5eefa;
+  border: 2px solid #d8c0e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.rb-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.rb-avatar img[src="images/pino.jpg"] {
+  transform: scale(1.3) translateX(6%);
+}
+
+.rb-avatar img[src="images/yukimi.jpg"] {
+  transform: scale(1.9) translateX(7%);
+}
+
+.rb-avatar img[src="images/kurumi.jpg"] {
+  transform: scale(1.4) translateX(6%) translateY(0%);
+}
+
+.rb-avatar img[src="images/tsukimi.jpg"] {
+  transform: scale(1.5);
+}
+
+.rb-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.rb-avatar img[src="images/pino.jpg"] {
+  transform: scale(1.3) translateX(5%);
+}
+
+  .bird-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  display: block;
+  transform: scale(1.12);
+}
+.nozomi-img img {
+  object-position: center;
+  transform: scale(1.0);
+}
+
+.waka-img img {
+  object-position: center;
+  transform: scale(1.1);
+}
+.hanami-img img {
+  object-position: center;
+  transform: scale(1.5);
+}
+
+.ruwa-img img {
+  object-position: center;
+  transform: scale(1.35) translateX(7%);
+}
+.hana-img img {
+  object-position: center;
+  transform: scale(1.24) translateX(7%);
+}
+  .rb-name { font-size: 15px; font-weight: 700; color: #4a3040; }
+  .rb-species { font-size: 12px; color: #9a7080; margin-top: 2px; }
+  .rb-age { font-size: 11px; color: #b090c0; margin-top: 2px; }
+  .rb-date { font-size: 11px; color: #c8a8d8; margin-top: 2px; }
+  .rb-desc { font-size: 12px; color: #6a5060; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<div class="deco-bird">🐦</div>
+<div class="deco-bird">🌿</div>
+<div class="deco-bird">🐤</div>
+<div class="deco-bird">🌸</div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar-wrap">
+      <div class="avatar top-icon-img">
+  <img src="images/topicon.png" alt="pinohana">
+</div>
+      <div class="avatar-badge">🌸</div>
+    </div>
+    <div class="hero-name">pino hana</div>
+    <div class="hero-sub">小鳥たちのご紹介と成長記録🌿<br>飼育・日常をお届けしています</div>
+
+  </div>
+
+  <!-- LINKS -->
+  <div class="links">
+    <a href="https://www.youtube.com/@pinohana" class="link-btn btn-yt" target="_blank" rel="noopener">
+      <div class="btn-icon">▶</div>
+      <div class="btn-text">
+        <span class="btn-title">YouTube チャンネル</span>
+        <span class="btn-desc">小鳥たちの日常を動画でお届け</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+    <a href="https://x.com/pinohanakotori" class="link-btn btn-x" target="_blank" rel="noopener">
+      <div class="btn-icon">𝕏</div>
+      <div class="btn-text">
+        <span class="btn-title">X（旧Twitter）</span>
+        <span class="btn-desc">小鳥のことや日常をきままにつぶやき中</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+    <a href="https://www.amazon.co.jp/shop/pinohana?tag=a0010-22" class="link-btn btn-amz" target="_blank" rel="noopener">
+      <div class="btn-icon">🛒</div>
+      <div class="btn-text">
+        <span class="btn-title">Amazon ストア</span>
+        <span class="btn-desc">動画で紹介したグッズや私のおすすめ商品</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+    <a href="https://www.amazon.jp/hz/wishlist/ls/1SVC8RDK8F4WF?ref_=wl_share" class="link-btn btn-wish" target="_blank" rel="noopener">
+      <div class="btn-icon">🎁</div>
+      <div class="btn-text">
+        <span class="btn-title">Amazon 欲しいものリスト</span>
+        <span class="btn-desc">今は欲しいものはありませんが、いつもありがとう🐦</span>
+      </div>
+      <span class="btn-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- FEATURED VIDEO -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">🎬 注目の動画</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="video-wrap">
+      <a href="https://www.youtube.com/@pinohana" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fdeef2,#f5c0cc);aspect-ratio:16/9;text-decoration:none;">
+        <div style="text-align:center;color:#a0607a;">
+          <div style="font-size:56px;">🐦</div>
+          <div style="font-size:15px;font-weight:700;margin-top:8px;">最新動画をチェック</div>
+        </div>
+      </a>
+      <div class="video-caption">
+        最新動画をチェック🐦
+        <div class="video-caption-sub">チャンネルで新しい動画を投稿しています</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYLIST -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">📂 カテゴリ</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="playlist-grid">
+      <a href="https://www.youtube.com/@pinohana/videos" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">🌸</div>
+        <div class="pl-name">オカメインコ　はな</div>
+        <div class="pl-count">はなの日常と成長記録</div>
+      </a>
+      <a href="https://www.youtube.com/@pinohana/videos" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">🌼</div>
+        <div class="pl-name">ブンチョウ　花美</div>
+        <div class="pl-count">花美の日々とお世話の記録</div>
+      </a>
+      <a href="https://www.youtube.com/@pinohana/videos" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">💚</div>
+        <div class="pl-name">セキセイインコ　希・若</div>
+        <div class="pl-count">希と若のなかよし記録</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=FoQHiYLuECM&list=PLG4nplen1q7SxEN5DXBUSAbGuOWKxj1Sy" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">🎵</div>
+        <div class="pl-name">セキセイインコの鳴き声</div>
+        <div class="pl-count">さえずり・歌声コレクション</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=_vYbxUKc4Ow&list=PLG4nplen1q7R-4xQe4HXiLaTRFTvsHq5W" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">🌿</div>
+        <div class="pl-name">コキンチョウ　瑠羽</div>
+        <div class="pl-count">お迎えからの成長記録</div>
+      </a>
+      <a href="https://www.youtube.com/playlist?list=PLG4nplen1q7Q1VaOZsgDOYrjn_VoYs7fF" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">🎶</div>
+        <div class="pl-name">コキンチョウの鳴き声</div>
+        <div class="pl-count">さえずり・歌声コレクション</div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=FWUgIomuogM&list=PLG4nplen1q7TzSBZljzjdcv3YaP3Ga7-c" class="pl-card" target="_blank" rel="noopener">
+        <div class="pl-emoji">📱</div>
+        <div class="pl-name">ショート動画</div>
+        <div class="pl-count">全羽まとめ・最新順</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">🌿 pino hana について</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-card">
+      <div class="about-text">
+        小鳥たちと過ごす静かな時間を記録しています🐦<br>
+        それぞれに歩んできた時間があり、今は同じ場所で穏やかな毎日を過ごしています。<br>
+        にぎやかな時間も、そっと寄り添う時間も、どちらも大切にしながら。<br>
+        小さな命と過ごす日々を、ゆっくりお届けしています。
+      </div>
+      <div class="about-tags">
+        <span class="tag">🐦 小鳥</span>
+        <span class="tag">🌸 成長記録</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIRDS SWIPE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">🐦 うちの子たちを紹介</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="swipe-outer" id="swipeOuter">
+      <div class="swipe-track" id="track">
+
+        <div class="bird-card">
+          <div class="bird-avatar hana-img">
+  <img src="images/hana.jpg" alt="はな">
+</div>
+          <div class="bird-name">はな</div>
+          <div class="bird-species">オカメインコ</div>
+          <div class="bird-gender">男の子</div>
+          <div class="bird-desc">
+            とにかくお父ちゃんが大好きで、私たちが会話をしていると「ぼくもいるよ」と言うように鳴いてきます🐦<br><br>
+            全盲のはなにとって、お父ちゃんはオンリーワンの存在。そばにいるだけで、世界がいちばん安心できる場所になるようです<br><br>
+            見えなくても、声で、気配で、ちゃんとそこにいる。その想いをいつも大切に、はなのペースで毎日を重ねています<br><br>
+            肝臓の治療中ですが、穏やかでマイペースに、変わらない日々を送っています
+          </div>
+          <div class="bird-tags"><span class="bird-tag">オカメインコ</span><span class="bird-tag">男の子</span><span class="bird-tag">お父ちゃん大好き</span></div>
+        </div>
+
+        <div class="bird-card">
+          <div class="bird-avatar hanami-img">
+  <img src="images/hanami.jpg" alt="花美" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+          <div class="bird-name">花美</div>
+          <div class="bird-species">ブンチョウ</div>
+          <div class="bird-gender">男の子</div>
+          <div class="bird-desc">
+            長期入院・手術を控えた元飼い主さまから、雪美・月美と一緒にお迎えした花美🐦（2021年2月／当時2才）<br>
+            3羽の名前は「雪月花」より名付けました🌸<br><br>
+            肩や足に障がいがあり飛ぶことはできませんが、花美専用の放鳥部屋で安心して過ごしています<br><br>
+            ブンチョウらしいオラオラした一面もありますが、抱っこするとしおらしくおとなしくなるギャップも大切な魅力のひとつです😊
+          </div>
+          <div class="bird-tags"><span class="bird-tag">保護鳥</span><span class="bird-tag">雪月花</span><span class="bird-tag">男の子</span><span class="bird-tag">ギャップ萌え</span></div>
+        </div>
+
+        <div class="bird-card">
+          <div class="bird-avatar nozomi-img">
+  <img src="images/nozomi.jpg" alt="希">
+</div>
+          <div class="bird-name">希</div>
+          <div class="bird-species">セキセイインコ</div>
+          <div class="bird-gender">男の子</div>
+          <div class="bird-desc">
+            奈良の保護施設から若・胡桃と一緒にお迎えした希🐦（2022年12月／当時6才）<br><br>
+            当初は疥癬の影響で飛ぶことができませんでしたが、今ではすっかり元気になり、つやつやの羽で自由に飛び回っています<br><br>
+            手にも乗るようになり、とても食いしん坊。年下の若からごはんをもらうこともある…別腹だそうです😄
+          </div>
+          <div class="bird-tags"><span class="bird-tag">保護鳥</span><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">男の子</span><span class="bird-tag">食いしん坊</span></div>
+        </div>
+
+        <div class="bird-card">
+          <div class="bird-avatar waka-img">
+  <img src="images/waka.jpg" alt="若">
+</div>
+          <div class="bird-name">若</div>
+          <div class="bird-species">セキセイインコ</div>
+          <div class="bird-gender">男の子</div>
+          <div class="bird-desc">
+            奈良の保護施設から希・胡桃と一緒にお迎えした若🐦（2022年12月／当時1才）<br><br>
+            当初は疥癬の影響で飛ぶことができませんでしたが、今ではすっかり元気に。ごはんを食べると「プレゼントするよ」と言うように希へアピールする姿も見られます😊<br><br>
+            肩や烏口骨、足などに骨格の変形がありますが、激しい運動を避けながら穏やかに過ごしています
+          </div>
+          <div class="bird-tags"><span class="bird-tag">保護鳥</span><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">男の子</span><span class="bird-tag">希へプレゼント</span></div>
+        </div>
+
+        <div class="bird-card">
+          <div class="bird-avatar ruwa-img">
+  <img src="images/ruwa.jpg" alt="瑠羽">
+</div>
+          <div class="bird-name">瑠羽（るわ）</div>
+          <div class="bird-species">コキンチョウ</div>
+          <div class="bird-gender">男の子</div>
+          <div class="bird-desc">
+            兵庫の保護施設からお迎えした瑠羽🐦（2026年3月／当時3才）<br>
+            飼い主さんの緊急入院により保護され、足環のナンバーから3才とわかりました<br><br>
+            瑠璃のような美しい色をまとい、自由に羽ばたき、やさしい時間の中で幸せに輝いてほしい——そんな願いを込めて瑠羽と名付けました<br><br>
+            さまざまな環境の変化を乗り越え、今では穏やかな毎日を送っています。手のひらに乗ってごはんを食べられるようにもなりました<br><br>
+            瑠羽のペースを大切にしながら、安心できる場所でやさしい時間をゆっくり重ねていきます
+          </div>
+          <div class="bird-tags"><span class="bird-tag">保護鳥</span><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">男の子</span></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="swipe-nav">
+      <button class="nav-btn" id="prev">‹</button>
+      <div class="dots" id="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <button class="nav-btn" id="next">›</button>
+    </div>
+    <div class="swipe-hint">← スワイプで次の子へ →</div>
+  </div>
+
+  <!-- RAINBOW BRIDGE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">🌈 虹の橋の子たち</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="rainbow-intro">いつもありがとう。また会う日まで🌈</div>
+
+    <div class="rb-card">
+      <div class="rb-top">
+        <div class="rb-avatar">
+  <img src="images/pino.jpg" alt="ぴの" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+        <div class="rb-info">
+          <div class="rb-name">ぴの</div>
+          <div class="rb-species">セキセイインコ・男の子</div>
+          <div class="rb-age">3才1ヶ月</div>
+          <div class="rb-date">🌈 2020年11月2日</div>
+        </div>
+      </div>
+      <div class="rb-desc">私がヒナから育てた、はじめての子です🐦（2020年10月お迎え）<br><br>おしゃべりをもごもごするようになり、男の子だとわかると少しずつ言葉を覚えていきました。私たちがはなに話しかける言葉も覚え、「はな、ごはん食べ」「お水は？」と口出しするおちゃめな一面で笑わせてくれる子でした<br><br>先輩のはなが大好きで、いつもあとを追いかけ、一緒にお昼寝をするなど、まるで親子のように過ごしていました。セキセイインコらしい鳴き方はあまりせず、オカメインコのような鳴き方を真似する、とても愛らしい子でした<br><br>たくさん食べるのに体重が増えない、体調を崩しやすいことが気になり、複数の病院に通い、便検査も都度受けていましたが、後にメガバクテリアが検出され、治療を開始しました<br><br>メガバクテリアによる胃炎と向き合いながらも、最後まで精一杯生きてくれました<br><br>誰とでも仲良くなれる性格だったので、今もpino hana家から旅立った子たちのそばで、やさしく見守ってくれているのだと思います<br><br>ぴの、みんなをよろしくね</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">ヒナからお迎え</span><span class="bird-tag">人馴れ</span><span class="bird-tag">はなが大好き</span><span class="bird-tag">オカメ鳴き</span></div>
+    </div>
+
+    <div class="rb-card">
+      <div class="rb-top">
+        <div class="rb-avatar">
+  <img src="images/kara.jpg" alt="カラ" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+        <div class="rb-info">
+          <div class="rb-name">カラ</div>
+          <div class="rb-species">コキンチョウ・男の子</div>
+          <div class="rb-age">8才1ヶ月</div>
+          <div class="rb-date">🌈 2024年12月28日</div>
+        </div>
+      </div>
+      <div class="rb-desc">ペットショップで長く過ごし、プライスカードには「成長しすぎたため」と記されていました。コキンチョウの平均寿命が5年と書かれているのを見て、この子のこれからを思い、お迎えしました🐦（当時3才3ヶ月）<br><br>コキンチョウのカラフルで美しい色のように、幸せな時間に包まれた鳥生になりますように。いろいろな景色を見て、感じて、輝いてほしい——そんな願いを込めて「カラ」と名付けました<br><br>それまで人と触れ合うことなく育ち、怖がりな一面もある荒鳥でしたが、やがてW未来（みらい・みく）と出会い、お兄ちゃんのような存在として過ごしていました。右羽軸が折れており上手に飛ぶことはできませんでしたが、飛べないみらいを気遣う姿など、やさしさにあふれた子でした<br><br>ペットショップで過ごした時間よりも、わが家で過ごした時間の方が長くなり、年を重ねるごとに足の衰えや視力の低下など、少しずつ変化も見られるようになりました。てんかんとも向き合いながら、最後の一年はシリンジによる流動食で過ごしました<br><br>カラはその命をしっかりと生き、8才1ヶ月まで天寿を全うしてくれました<br><br>今はみらい・みく・ぴのと再会し、自由に飛び回っていると思います<br><br>カラとの出会いは、保護鳥と向き合うきっかけとなりました</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">荒鳥からお迎え</span></div>
+    </div>
+
+    <div class="rb-card">
+      <div class="rb-top">
+        <div class="rb-avatar">
+  <img src="images/mirai.jpg" alt="未来（みらい）" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+        <div class="rb-info">
+          <div class="rb-name">未来（みらい）</div>
+          <div class="rb-species">コキンチョウ・男の子</div>
+          <div class="rb-age">3才10ヶ月</div>
+          <div class="rb-date">🌈 2022年1月28日</div>
+        </div>
+      </div>
+      <div class="rb-desc">障がいがあり、バックヤードにいたところをみくと同時にお迎えしました🐦（2020年6月／当時2才3ヶ月）<br><br>ショップでの管理中にラットによって片足を失うという、つらい経験をした子です<br><br>羽が生え揃っても高く飛ぶことはできませんでしたが、低空をやさしく飛ぶ姿を見せてくれるようになりました<br><br>成鳥とは思えないほどまん丸なおめめが印象的な、とても愛らしい子でした<br><br>荒鳥でしたが、歩けなくなってからは抱っこでごはんを食べるようになり、少しずつ頼ってくれる姿も見せてくれました<br><br>みくやカラと仲良く過ごし、ベッドで3羽そろって眠る姿は心があたたかくなる時間でした<br><br>みくと一緒に「W未来」として、輝いてくれた子です</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">W未来</span></div>
+    </div>
+
+    <div class="rb-card">
+      <div class="rb-top">
+        <div class="rb-avatar">
+  <img src="images/miku.jpg" alt="未来（みく）" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+        <div class="rb-info">
+          <div class="rb-name">未来（みく）</div>
+          <div class="rb-species">コキンチョウ・女の子</div>
+          <div class="rb-age">4才7ヶ月</div>
+          <div class="rb-date">🌈 2022年10月13日</div>
+        </div>
+      </div>
+      <div class="rb-desc">障がいがあり、バックヤードにいたところをみらいと同時にお迎えしました🐦（2020年6月／当時2才3ヶ月）<br><br>ショップでの管理中にラットにより足の指（趾）を失うというつらい経験をした子です。羽切りされていたため飛ぶことはできませんでしたが、お迎え後に羽が生え揃うとのびのびと飛び回れるようになりました<br><br>みらいと一緒に「W未来」として、輝いてくれた子です<br><br>カラとみらいと3羽で、仲良く穏やかな毎日を共に<br><br>膵臓の病気と向き合いながらも、みくらしく最後まで過ごしてくれました</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">荒鳥からお迎え</span>🐦（2020年6月／当時2才3ヶ月）<br><br>ショップでの管理中にラットによって片足を失うという、つらい経験をした子です<br><br>羽が生え揃っても高く飛ぶことはできませんでしたが、低空をやさしく飛ぶ姿を見せてくれるようになりました<br><br>成鳥とは思えないほどまん丸なおめめが印象的な、とても愛らしい子でした<br><br>荒鳥でしたが、歩けなくなってからは抱っこでごはんを食べるようになり、少しずつ頼ってくれる姿も見せてくれました<br><br>みくやカラと仲良く過ごし、ベッドで3羽そろって眠る姿は心があたたかくなる時間でした<br><br>みくと一緒に「W未来」として、輝いてくれた子です</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">W未来</span></div>
+    </div>
+
+    <div class="rb-card">
+  <div class="rb-top">
+
+    <div class="rb-avatar">
+      <img src="images/tsukimi.jpg" alt="月美" onerror="this.parentNode.innerHTML='🐦'">
+    </div>
+
+    <div class="rb-info">
+      <div class="rb-name">月美</div>
+      <div class="rb-species">ジュウシマツ・男の子</div>
+      <div class="rb-age">5才2ヶ月</div>
+      <div class="rb-date">🌈 2024年10月2日</div>
+    </div>
+
+  </div>
+
+      <div class="rb-desc">長期入院と手術を控えた元飼い主さまから、雪美・花美と一緒にお迎えしました🐦（2021年2月／当時1才6ヶ月）<br>3羽の名前は「雪月花」より名付けました🌸<br><br>生まれつき翼がなく飛ぶことはできませんでしたが、誰よりも元気で愛嬌たっぷりな子でした<br><br>お迎え時は荒鳥でしたが、少しずつ距離が縮まり、やがて手の中にすっぽり収まって甘えるようになりました。カキカキされながらうっとりする表情がとても愛らしい子でした<br><br>悪性腫瘍の手術を受けましたが取り切れず、てんかんと向き合いながらも前向きに過ごしていました。飛べないながらも行動範囲は広く、水浴びも欠かさず、巣材を運んでベッドを作るなど、毎日を忙しく過ごしていました<br><br>てんかんが再発し、自分で作った巣の中で穏やかに旅立ちました<br><br>雪美・花美と「雪月花」として、輝いてくれた子です</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">保護鳥</span><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">雪月花</span></div>
+    </div>
+
+    <div class="rb-card">
+      <div class="rb-top">
+        <div class="rb-avatar">
+  <img src="images/yukimi.jpg" alt="雪美" onerror="this.parentNode.innerHTML='🐦'">
+</div>
+        <div class="rb-info">
+          <div class="rb-name">雪美</div>
+          <div class="rb-species">ジュウシマツ・女の子</div>
+          <div class="rb-age">2才1ヶ月</div>
+          <div class="rb-date">🌈 2021年9月27日</div>
+        </div>
+      </div>
+      <div class="rb-desc">長期入院と手術を控えた元飼い主さまから、月美・花美と一緒にお迎えしました🐦（2021年2月／当時1才6ヶ月）<br>3羽の名前は「雪月花」より名付けました🌸<br><br>お迎え時の検診で肝臓がかなり弱いことがわかり、余命を告げられました<br><br>人馴れしていない子でしたが、とても甘え上手で、月美から羽繕いや菜っ葉のプレゼントをもらったり、花美にも体当たりしながら寄り添う姿を見せてくれました。気の強い花美に近づけたのは、雪美だけでした<br><br>最期は花美と月美に見守られながら、穏やかに旅立ちました<br><br>月美・花美と「雪月花」として、輝いてくれた子です</div>
+      <div class="bird-tags" style="margin-top:8px;"><span class="bird-tag">保護鳥</span><span class="bird-tag">荒鳥からお迎え</span><span class="bird-tag">雪月花</span></div>
+    </div>
+
+  <div class="rb-card">
+  <div class="rb-top">
+
+    <div class="rb-avatar">
+      <img src="images/kurumi.jpg" alt="胡桃" onerror="this.parentNode.innerHTML='🐦'">
+    </div>
+
+    <div class="rb-info">
+      <div class="rb-name">胡桃</div>
+      <div class="rb-species">セキセイインコ・女の子</div>
+      <div class="rb-age">6才8ヶ月</div>
+      <div class="rb-date">🌈 2023年8月4日</div>
+    </div>
+
+  </div>
+
+  <div class="rb-desc">
+    奈良の保護施設から希・若と一緒にお迎えした胡桃🐦（2022年12月・当時6才）<br><br>
+    <div class="rb-desc">
+当初は疥癬の影響で飛ぶことができず、治療も長く続きましたが、頑張って乗り越え、再び飛べるようになりました。<br><br>
+一時はどうなるかと心配していましたが、希と若に「胡桃ちゃん、胡桃ちゃん」と可愛がられ、大切にされながら過ごしていました。<br><br>
+穏やかでやさしい性格で、いつもみんなのそばで静かに寄り添うように過ごしていた子です。<br><br>
+重度の疥癬を乗り越えましたが、その後、胃炎のため旅立ちました。最期は希と若に羽繕いされながら、愛情いっぱいに見送られました。<br><br>
+今も変わらず、大切な家族の一員です。
+</div>
+  <div class="bird-tags" style="margin-top:8px;">
+    <span class="bird-tag">保護鳥</span>
+    <span class="bird-tag">荒鳥からお迎え</span>
+  </div>
+</div>
+
+  <div class="footer">
+    <span class="footer-bird">🐦</span>
+    © pino hana · All Rights Reserved
+  </div>
+
+</div>
+
+<script>
+const track = document.getElementById('track');
+const cards = track.querySelectorAll('.bird-card');
+const dotsEl = document.getElementById('dots');
+let cur = 0;
+const total = cards.length;
+cards.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  dotsEl.appendChild(d);
+});
+function go(n) {
+  cur = (n + total) % total;
+  track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+  dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+document.getElementById('prev').onclick = () => go(cur - 1);
+document.getElementById('next').onclick = () => go(cur + 1);
+let startX = 0;
+const outer = document.getElementById('swipeOuter');
+outer.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+outer.addEventListener('touchend', e => {
+  const diff = startX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) go(diff > 0 ? cur + 1 : cur - 1);
+}, {passive:true});
+</script>
+
+
+</body></html>
